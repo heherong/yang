@@ -1,0 +1,81 @@
+<view class="container">
+  
+  <view class="page-body">
+  <!-- notice -->
+    <view class="page-section index-notice">
+      <view class="flex-wrp" style="flex-direction:column;">
+        <view class='notice'>
+          <text class='notice-title'>{{title}}</text>
+          <text style='font-size:small;'>{{noticeContent}}</text>
+        </view>
+      </view>
+    </view>
+  <!-- learnModule -->
+    <view class="page-section">
+      <view class="page-section-spacing">
+        <view class="flex-wrp" style="flex-direction:row;">
+          <navigator url="../natural/natural" class="navigator">
+            <view class="flex-item  demo-text-1 natural">
+              <image src='../../../images/read.png'></image>
+              <text class='index-eng'>Phonics</text>
+              <text>自然拼读</text>
+            </view>
+          </navigator>
+          <navigator url="../nation/nation" class="navigator">
+            <view class="flex-item demo-text-2 nation">
+              <image src='../../../images/nation.png'></image>
+              <text class='index-eng'>Pronunciation</text>
+              <text>发音训练</text>
+            </view>
+          </navigator>
+        </view>
+      </view>
+
+      <view class="page-section-spacing">
+        <view class="flex-wrp" style="flex-direction:row;">
+          <navigator url="../oral/oral" class="navigator">
+            <view class="flex-item  demo-text-1 oral">
+              <image src='../../../images/oral.png'></image>
+              <text class='index-eng'>Topics</text>
+              <text>口语主题</text>
+            </view>
+          </navigator>
+          <navigator url="../training/training" class="navigator">
+            <view class="flex-item demo-text-2 training">
+              <image src='../../../images/training.png'></image>
+              <text class='index-eng'>Abilities</text>
+              <text>综合能力</text>
+            </view>
+          </navigator>
+        </view>
+      </view>
+
+      <view class="page-section-spacing">
+        <view class="flex-wrp" style="flex-direction:row;">
+          <navigator url="../interesting/interesting" class="navigator">
+            <view class="flex-item  demo-text-1 interesting">
+              <image src='../../../images/interesting.png'></image>
+              <text class='index-eng'>Funny</text>
+              <text>趣味英语</text>
+            </view>
+          </navigator>
+          <navigator url="../game/game" class="navigator">
+            <view class="flex-item demo-text-2 game">
+              <image src='../../../images/game.png'></image>
+              <text class='index-eng'>Game</text>
+              <text>疯狂游戏</text>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <!-- 尾部 -->
+    <view class='contact'>
+      <view class='contact-ma'>
+        <text>{ 工作号二维码 }</text>
+        <image src='{{ewmImg}}' style='width:300rpx;height:300rpx;'></image>
+      </view>
+    </view>
+  </view>
+
+</view>

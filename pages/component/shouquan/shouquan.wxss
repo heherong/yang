@@ -1,0 +1,30 @@
+/* pages/shouquan/shouquan.wxss */
+.container{
+  height: 100%;
+  width:100%;
+  background: #fff
+}
+.logo{
+  height:300rpx;
+  width:100%;
+  text-align: center
+}
+.logo image{
+  width:300rpx;
+  height:300rpx;
+  margin-top:140rpx;
+}
+.logo view{
+  color:#2d78f4;
+  margin-top:20rpx;
+  font-size: large;
+}
+.shouquan{
+  width:80%;
+  position: absolute;
+  left:10%;
+  top:50%;
+  transform: translateY(-50%);
+  background: #43ac45;
+  color:#fff;
+}

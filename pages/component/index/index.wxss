@@ -1,0 +1,135 @@
+/**index.wxss**/
+.navigator-hover{
+    background-color:#fff;
+    opacity:1;
+}
+.demo-text-1{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  border-radius: 10rpx;
+  text-align: center;
+  margin-right:35rpx;
+}
+.demo-text-1:before{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.demo-text-2{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  border-radius: 10rpx;
+  text-align: center;
+}
+.demo-text-2:before{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.natural{
+    background-color:#cceded;
+    border:solid 6rpx #96cccc;
+}
+.nation{
+    background-color:#ffd98a;
+    border:solid 6rpx #fab014;
+}
+.oral{
+    background-color:#ffb9c1;
+    border:solid 6rpx #e26b78;
+}
+.training{
+    background-color:#cfe2ff;
+    border:solid 6rpx #9588d3;
+}
+.interesting{
+    background-color:#d1ffaf;
+    border:solid 6rpx #9ad66d;
+}
+.game{
+    background-color:#ffcfb1;
+    border:solid 6rpx #f76a17;
+}
+
+
+.flex-wrp{
+  /* margin-top: 60rpx; */
+  display:flex;
+}
+.flex-item{
+  width: 315rpx;
+  height: 200rpx;
+  font-size: 26rpx;
+}
+.flex-item-V{
+  margin: 0 auto;
+  width: 500rpx;
+  height: 300rpx;
+  margin-top:30rpx;
+}
+/* index */
+.index-notice{
+  background-color:#7cafff;
+}
+.notice{
+  padding:15rpx 40rpx 30rpx 40rpx;
+}
+.notice text{
+  color:#fff;
+  display:block;
+  width:100%;
+  float:left;
+}
+.notice text.notice-title{
+  display:block;
+  /* text-align:center; */
+  margin:0 auto;
+  width:100%;
+  margin-bottom: 10rpx;
+}
+.flex-item image{
+  display: block;
+  width:110rpx;
+  height:100rpx;
+  margin:0 auto;
+}
+/* .nation image{
+  margin-top:10rpx;
+  width:100rpx;
+  height:90rpx;
+} */
+.flex-item text{
+  display:block;
+  margin:0 auto;
+  color:#333;
+}
+.flex-item .index-eng{
+    color:#2d78f4;
+    margin-bottom: 5rpx;
+}
+.contact{
+  padding:40rpx 60rpx 0 60rpx;
+  margin:0 auto;
+  text-align: center;
+}
+.contact-ma{
+  border-top:solid 2rpx #ccc;
+  padding-top:20rpx;
+}
+.contact-ma text{
+  display: block;
+  color:#2d78f4;
+  margin-bottom: 10rpx;
+}
+.contact-ma image{
+  width:300rpx;
+  height:350rpx;
+
+}

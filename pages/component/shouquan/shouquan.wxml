@@ -1,0 +1,12 @@
+<!--pages/shouquan/shouquan.wxml-->
+<view class='container'>
+  <view class='logo'>
+      <image src='../../../images/logo.jpg' style='border-radius:300rpx;'></image>
+      <view>英语口语同路人</view>
+  </view>
+  <!-- 需要使用 button 来授权登录 -->
+  <button class='shouquan' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+  <view wx:else>请升级微信版本</view> 
+</view>
+
+

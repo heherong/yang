@@ -1,0 +1,84 @@
+<!--pages/natural/natural.wxml-->
+<view class='natural'>
+    <!-- 头部 -->
+    <view class='title'>
+        <view class= "child {{status==0 ? 'active' : ''}} "  catchtap="onChangeTap"  data-status="0" >
+            <image src= " {{status==0 ?  '../../../images/child_on.png' : '../../../images/child.png' }}" ></image>
+            <text >少儿</text>
+        </view>
+        <view class= "person {{status==1 ? 'active' : ''}} "  catchtap="onChangeTap"  data-status="1" >
+            <image src=" {{status==1 ?  '../../../images/person_on.png' : '../../../images/person.png' }}"></image>
+            <text>成人</text>
+        </view>
+    </view>
+    <!-- 内容 -->
+    <view class="content {{status==0 ? 'box-show' : 'box-hidden'}} ">
+        <!-- 大区域 -->
+        <block wx:for-items="{{list}}" wx:key="no">
+            <view class='content-module'>
+                <view class="module-title">
+                    <text>{{item.name}}</text>
+                </view>
+                <view class='module-list'>
+                    <!-- 格式划分 -->
+                    <block wx:for="{{item.content}}"  wx:for-item="content"   wx:key="no">
+                        <view class='listTwo'>
+                            <view class='listTwo-title'>
+                                <text>{{content.name}}</text>
+                            </view>
+                            <!-- 列表 -->
+                            <block wx:for="{{content.data}}"  wx:for-item="data"   wx:key="no">
+                                
+                                <view class='list' catchtap="openTip" data-vip ="{{data.vip}}" data-format="{{content.id}}" data-id="{{data.id}}">
+                                    <image src="{{data.image}}"></image>
+                                    <image src='../../../images/vip.png'  class= "noVip {{data.vip ?  'vip': ' ' }} "></image>
+                                    <text>{{data.name}}</text>
+                                    <text class='list-name'>（浏览数：{{data.mount}})</text>
+                                </view> 
+                            </block>
+                        </view>
+                    </block>
+                </view>
+            </view> 
+        </block>
+    </view>
+    <!-- 弹框 -->
+    <modal hidden="{{hiddenmodalput}}" title="会员提醒" confirm-text="确认" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" >
+        <text class='tip-text'>你还不是会员哦，快来扫码加入吧~</text>
+        <image src='../../../images/ewm.png' class='tip-image'></image>
+    </modal>
+    <!-- 内容 成人 -->
+    <view class="content-person {{status==1 ? 'box-show' : 'box-hidden'}} " >
+        <!-- 大区域 -->
+        <block wx:for-items="{{list}}" wx:key="no">
+            <view class='content-module'>
+                <view class="module-title">
+                    <text>{{item.name}}</text>
+                </view>
+                <view class='module-list'>
+                    <!-- 格式划分 -->
+                    <block wx:for="{{item.content}}"  wx:for-item="content"   wx:key="no">
+                        <view class='listTwo'>
+                            <view class='listTwo-title'>
+                                <text>{{content.name}}</text>
+                            </view>
+                            <!-- 列表 -->
+                            <block wx:for="{{content.data}}"  wx:for-item="data"   wx:key="no">
+                                <view class='list' catchtap="openTip" data-vip ="{{data.vip}}" data-format="{{content.id}}" data-id="{{data.id}}">
+                                <image src="{{data.image}}"></image>
+                                    <image src='../../../images/vip.png'  class= "noVip {{data.vip ?  'vip': ' ' }} "></image>
+                                    <text>{{data.name}}</text>
+                                    <text class='list-name'>（浏览数：{{data.mount}})</text>
+                                </view> 
+                            </block>
+                        </view>
+                    </block>
+                </view>
+            </view> 
+        </block>
+    </view>
+
+
+
+
+</view>

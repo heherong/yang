@@ -1,0 +1,41 @@
+<!--pages/comment/comment.wxml-->
+<view class='natural'>
+     <!-- 内容 -->
+    <view class="content box-show ">
+        <!-- 大区域 -->
+        <block wx:for-items="{{list}}" wx:key="no">
+            <view class='content-module'>
+                <view class="module-title">
+                    <text>{{item.name}}</text>
+                </view>
+                <view class='module-list'>
+                    <!-- 格式划分 -->
+                    <block wx:for="{{item.content}}"  wx:for-item="content"   wx:key="no">
+                        <view class='listTwo'>
+                            <view class='listTwo-title'>
+                                <text>{{content.name}}</text>
+                            </view>
+                            <!-- 列表 -->
+                            <block wx:for="{{content.data}}"  wx:for-item="data"   wx:key="no">
+                                
+                                <view class='list' catchtap="openTip" data-vip ="{{data.vip}}" data-format="{{content.id}}" data-id="{{data.id}}">
+                                    <image src="{{data.image}}"></image>
+                                    <image src='../../../images/vip.png'  class= "noVip {{data.vip ?  'vip': ' ' }} "></image>
+                                    <text>{{data.name}}</text>
+                                    <text class='list-name'>（浏览数：{{data.mount}})</text>
+                                </view> 
+                            </block>
+                        </view>
+                    </block>
+                </view>
+            </view> 
+        </block>
+    </view>
+    <!-- 弹框 -->
+    <modal hidden="{{hiddenmodalput}}" title="会员提醒" confirm-text="确认" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" >
+        <text class='tip-text'>你还不是会员哦，快来扫码加入吧~</text>
+        <image src='../../../images/ewm.png' class='tip-image'></image>
+    </modal>
+   
+</view>
+

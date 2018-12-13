@@ -1,0 +1,21 @@
+{
+  "pages":[
+    "pages/component/shouquan/shouquan",
+    "pages/component/index/index",
+    "pages/component/natural/natural",
+    "pages/component/nation/nation",
+    "pages/component/oral/oral",
+    "pages/component/training/training",
+    "pages/component/interesting/interesting",
+    "pages/component/game/game",
+    "pages/component/learn/learn",
+    "pages/component/comment/comment",
+    "pages/component/course/course"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"#2d78f4"
+  }
+}

@@ -1,0 +1,99 @@
+<!--pages/course/course.wxml-->
+<view class='course'>
+    <view class='content'>
+    <!-- 图片 -->
+        <!-- <block  > -->
+        <block  wx:if="{{format==1}}" wx:for-items="{{list}}" wx:key="no">
+            <view class='imgsList' wx:if="{{format==1}}" wx:for-items="{{list}}" wx:key="no">
+                <block wx:for="{{item.content}}"  wx:for-item="content"   wx:key="no">
+                     <image src='{{ content.course}}' ></image>
+                </block>
+            </view>
+            <!-- dianji -->
+            <view class='toComment'>
+                <view class='text'>
+                    <text class='area'>评论区</text>
+                    <text class='scan'>浏览数：{{item.scan  }}</text>
+                </view>
+                <button class="mini-btn join" type="default" size="mini"  catchtap='toComment'>我要留言</button>
+            </view>
+            <!-- 评论 -->
+            <view class='commentList'>
+                <block wx:for="{{item.comment}}"  wx:for-item="comment"   wx:key="no">
+                    <view class='discuss'>
+                        <image src="{{ comment.image }}"></image>
+                        <view>
+                            <text class='discuss-name'>{{ comment.name }} \n</text>
+                            <text class='discuss-on'>{{ comment.evaluate }}</text>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </block>
+
+    <!-- PPT & word-->
+        <block  wx:if="{{format==2 || format==3 }}"  wx:for-items="{{list}}" wx:key="no">
+            <view class='imgsList'>
+                <image src='{{ item.picture}}'></image>
+                <image src='../../../images/ppt.png' class='format-ppt'  wx:if="{{format==2 }}" ></image>
+                <image src='../../../images/word.png' class='format-ppt'  wx:if="{{format==3 }}" ></image>
+                <button type="primary" class="mini-btn">下载</button>
+            </view>
+            <!-- dianji -->
+            <view class='toComment'>
+                <view class='text'>
+                    <text class='area'>评论区</text>
+                   <text class='scan'>浏览数：{{item.scan  }}</text>
+                </view>
+                <button class="mini-btn join" type="default" size="mini" catchtap='toComment'>我要留言</button>
+            </view>
+            <!-- 评论 -->
+            <view class='commentList'>
+                <block wx:for="{{item.comment}}"  wx:for-item="comment"   wx:key="no">
+                    <view class='discuss'>
+                        <image src="{{ comment.image }}"></image>
+                        <view>
+                            <text class='discuss-name'>{{ comment.name }} \n</text>
+                            <text class='discuss-on'>{{ comment.evaluate }}</text>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </block>
+
+     <!-- 视频-->
+        <block  wx:if="{{format==4 }}"  wx:for-items="{{list}}" wx:key="no">
+            <view class='imgsList'>
+                <video src='{{ item.content}}' id="myVideo" ></video>
+            </view>
+            <!-- dianji -->
+            <view class='toComment'>
+                <view class='text'>
+                    <text class='area'>评论区</text>
+                   <text class='scan'>浏览数：{{item.scan  }}</text>
+                </view>
+                <button class="mini-btn join" type="default" size="mini" catchtap='toComment'>我要留言</button>
+            </view>
+            <!-- 评论 -->
+            <view class='commentList'>
+                <block wx:for="{{item.comment}}"  wx:for-item="comment"   wx:key="no">
+                    <view class='discuss'>
+                        <image src="{{ comment.image }}"></image>
+                        <view>
+                            <text class='discuss-name'>{{ comment.name }} \n</text>
+                            <text class='discuss-on'>{{ comment.evaluate }}</text>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </block>
+
+    </view>
+ </view>
+ <!-- 留言弹框 -->
+ <modal hidden="{{hiddenmodalput}}" title="留言" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" class="model">
+    <image src='{{userInfo.avatarUrl}}'></image>
+    <text>{{ userInfo.nickName }}</text>
+    <textarea  style="height: 5em"  bindinput="bindinput" value='{{ comment_textarea }}'/>
+</modal>
+

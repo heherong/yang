@@ -1,0 +1,95 @@
+/* pages/course/course.wxss */
+.content{
+    padding:0 30rpx;
+    margin:20rpx 0;
+}
+.imgsList image{
+    width:640rpx;
+    height:480rpx;
+    margin-left:20rpx;
+}
+.discuss{
+    width:620rpx;
+    margin:20rpx;
+    border:solid 1rpx #cfdef5;
+    background-color:#e6f0ff;
+    padding:10rpx 10rpx 0 10rpx;
+    border-radius:10rpx;
+    overflow: hidden;
+}
+.discuss image{
+    float:left;
+    width:70rpx;
+    height:70rpx;
+    border-radius:70rpx;
+}
+.discuss view{
+    float:left;
+    width:510rpx;
+    margin-top:-15rpx;
+    margin-left:15rpx;
+}
+.discuss-name{
+    font-size:xx-small;
+    color:#2d78f4;
+}
+.discuss-on{
+    /* width:550rpx; */
+    font-size:small;
+}
+.toComment{
+    overflow: hidden;
+    width:620rpx;
+    padding:10rpx;
+    margin-left:20rpx;
+}
+.text{
+    float:left;
+}
+.text .area{
+    margin-right:15rpx;
+   color: #2d78f4;
+   border-bottom: solid 1rpx #2d78f4;
+}
+.text .scan{
+   font-size: x-small;
+}
+.join{
+    float:right;
+    margin:0;
+}
+.imgsList .format-ppt{
+    width:100rpx;
+    height:100rpx;
+    position:relative;
+    top:-485rpx;
+}
+.imgsList button{
+    width:560rpx;
+    margin-top:-100rpx;
+    background-color: #5291f5;
+    color:#fff;
+}
+.imgsList video{
+    width:640rpx;
+    height:450rpx;
+    margin-left:25rpx;
+}
+.model textarea{
+    height:5em;
+    border:solid 1px #ccc;
+    width:94%;
+    padding:3%;
+    margin-top:15rpx;
+}
+.model image{
+    width:90rpx;
+    height:90rpx;
+    border-radius:90rpx;
+}
+.model text{
+    position:relative;
+    top:-30rpx;
+    color: #5291f5;
+    left:20rpx;
+}
