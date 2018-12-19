@@ -157,7 +157,7 @@ Page({
             // 是VIP
             let format = event.currentTarget.dataset.format;
             let id = event.currentTarget.dataset.id;
-            // console.log(format);
+            
             wx.navigateTo({
                 url: "../course/course?format=" + format + "&id=" + id
             })

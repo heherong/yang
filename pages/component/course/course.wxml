@@ -6,7 +6,7 @@
         <block  wx:if="{{format==1}}" wx:for-items="{{list}}" wx:key="no">
             <view class='imgsList' wx:if="{{format==1}}" wx:for-items="{{list}}" wx:key="no">
                 <block wx:for="{{item.content}}"  wx:for-item="content"   wx:key="no">
-                     <image src='{{ content.course}}' ></image>
+                     <image src='{{ content}}' ></image>
                 </block>
             </view>
             <!-- dianji -->
@@ -21,12 +21,20 @@
             <view class='commentList'>
                 <block wx:for="{{item.comment}}"  wx:for-item="comment"   wx:key="no">
                     <view class='discuss'>
+                        <view  style="position:absolute;left:70%;font-size:22rpx;margin-top:0rpx;">
+                            <text>{{ comment.dateCreated }}</text>
+                        </view>
                         <image src="{{ comment.image }}"></image>
                         <view>
                             <text class='discuss-name'>{{ comment.name }} \n</text>
                             <text class='discuss-on'>{{ comment.evaluate }}</text>
                         </view>
                     </view>
+                </block>
+                <block wx:if="{{commentNull}}" >
+                        <view style='margin:20rpx;background-color:#e6f0ff;padding:10rpx;'>
+                            <text class='discuss-on'>暂无评论，快来踩沙发~</text>
+                        </view>
                 </block>
             </view>
         </block>
@@ -37,7 +45,7 @@
                 <image src='{{ item.picture}}'></image>
                 <image src='../../../images/ppt.png' class='format-ppt'  wx:if="{{format==2 }}" ></image>
                 <image src='../../../images/word.png' class='format-ppt'  wx:if="{{format==3 }}" ></image>
-                <button type="primary" class="mini-btn">下载</button>
+                <button type="primary" class="mini-btn" catchtap='toDownload'>下载</button>
             </view>
             <!-- dianji -->
             <view class='toComment'>
@@ -51,12 +59,20 @@
             <view class='commentList'>
                 <block wx:for="{{item.comment}}"  wx:for-item="comment"   wx:key="no">
                     <view class='discuss'>
+                        <view  style="position:absolute;left:70%;font-size:22rpx;margin-top:0rpx;">
+                          <text>{{ comment.dateCreated }}</text>
+                        </view>
                         <image src="{{ comment.image }}"></image>
                         <view>
                             <text class='discuss-name'>{{ comment.name }} \n</text>
                             <text class='discuss-on'>{{ comment.evaluate }}</text>
                         </view>
                     </view>
+                </block>
+                <block wx:if="{{commentNull}}" >
+                        <view style='margin:20rpx;background-color:#e6f0ff;padding:10rpx;'>
+                            <text class='discuss-on'>暂无评论，快来踩沙发~</text>
+                        </view>
                 </block>
             </view>
         </block>
@@ -78,11 +94,15 @@
             <view class='commentList'>
                 <block wx:for="{{item.comment}}"  wx:for-item="comment"   wx:key="no">
                     <view class='discuss'>
+                        <view  style="position:absolute;left:70%;font-size:22rpx;margin-top:0rpx;">
+                          <text>{{ comment.dateCreated }}</text>
+                        </view>
                         <image src="{{ comment.image }}"></image>
                         <view>
                             <text class='discuss-name'>{{ comment.name }} \n</text>
                             <text class='discuss-on'>{{ comment.evaluate }}</text>
                         </view>
+                        
                     </view>
                 </block>
             </view>

@@ -59,13 +59,13 @@
               <text>趣味英语</text>
             </view>
           </navigator>
-          <navigator url="../game/game" class="navigator">
+          <!-- <navigator url="../game/game" class="navigator">
             <view class="flex-item demo-text-2 game">
               <image src='../../../images/game.png'></image>
               <text class='index-eng'>Game</text>
               <text>疯狂游戏</text>
             </view>
-          </navigator>
+          </navigator> -->
         </view>
       </view>
     </view>

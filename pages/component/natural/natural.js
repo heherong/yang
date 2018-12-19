@@ -9,17 +9,19 @@ Page({
     data: {
         status: 0, //0是少儿区，1是成人区
         list: [],
-        hiddenmodalput: true //可以通过hidden是否掩藏弹出框的属性，来指定那个弹出框
+        hiddenmodalput: true ,//可以通过hidden是否掩藏弹出框的属性，来指定那个弹出框
+        imageUrl:'https://herongnizi.cn/study/data/img?path=',
     },
 
     /**
      * 生命周期函数--监听页面加载 1是图片，2是PPT，3是word ，4是视频
      */
     onLoad: function(options) {
-        let allData = this.getNaturalData(this.data.status);
-        this.setData({
-            list: allData,
-        })
+        this.getNaturalData(this.data.status);
+       
+        // this.setData({
+        //     list: allData,
+        // })
     },
 
     /**
@@ -79,7 +81,8 @@ Page({
             url: url + '/study/api/listData.json', //请求接口的url
             data: {
                 typeId:1,
-                access_token: wx.getStorageSync('token')
+                access_token: wx.getStorageSync('token'),
+                typeAgeId: status==0?14:15
             },
             method: 'GET', //请求方式
             header: {
@@ -89,290 +92,129 @@ Page({
                 wx.hideLoading();
             },
             success: res => {
-                console.log(res);
+                let that = this;
+                if(res.data.data){
+                    // 重新拼装
+                    let allData = [{ id: 1, name: '学习区', content: [{ id: 1, name: '图片', data: [] }, { id: 2, name: 'PPT', data: [] }, { id: 3, name: 'word文档', data: [] }, { id: 4, name: '视频', data: [] }] }, { id: 2, name: '练习区', content: [{ id: 1, name: '图片', data: [] }, { id: 2, name: 'PPT', data: [] }, { id: 3, name: 'word文档', data: [] }, { id: 4, name: '视频', data: [] }] }, { id: 3, name: '听力区', content: [{ id: 1, name: '图片', data: [] }, { id: 2, name: 'PPT', data: [] }, { id: 3, name: 'word文档', data: [] }, { id: 4, name: '视频', data: [] }] },];
+                    let data_ = res.data.data;
+                    for(let i=0;i<data_.length;i++){
+                        data_[i].image = that.data.imageUrl + data_[i].image + "&access_token="+ wx.getStorageSync('token');
+                        if (data_[i].typeRegion.id == 11){
+                            // 学习区
+                            if (data_[i].typeFile.id == 7){
+                                // 图片
+                                allData[0].content[0].data.push(data_[i]);
+                            } else if (data_[i].typeFile.id == 8){
+                                // 视频
+                                allData[0].content[3].data.push(data_[i]);
+                            } else if (data_[i].typeFile.id == 9) {
+                                // PPT
+                                allData[0].content[1].data.push(data_[i]);
+                            } else if (data_[i].typeFile.id == 10) {
+                                // word
+                                allData[0].content[2].data.push(data_[i]);
+                            }
+
+                        } else if (data_[i].typeRegion.id == 12){
+                            // 练习区
+                            if (data_[i].typeFile.id == 7) {
+                                // 图片
+                                allData[1].content[0].data.push(data_[i]);
+                            } else if (data_[i].typeFile.id == 8) {
+                                // 视频
+                                allData[1].content[3].data.push(data_[i]);
+                            } else if (data_[i].typeFile.id == 9) {
+                                // PPT
+                                allData[1].content[1].data.push(data_[i]);
+                            } else if (data_[i].typeFile.id == 10) {
+                                // word
+                                allData[1].content[2].data.push(data_[i]);
+                            }
+
+                        } else if (data_[i].typeRegion.id == 13) {
+                            // 听力区
+                            if (data_[i].typeFile.id == 7) {
+                                // 图片
+                                allData[2].content[0].data.push(data_[i]);
+                            } else if (data_[i].typeFile.id == 8) {
+                                // 视频
+                                allData[2].content[3].data.push(data_[i]);
+                            } else if (data_[i].typeFile.id == 9) {
+                                // PPT
+                                allData[2].content[1].data.push(data_[i]);
+                            } else if (data_[i].typeFile.id == 10) {
+                                // word
+                                allData[2].content[2].data.push(data_[i]);
+                            }
+                            
+                        }
+                    }
+                    // 去除为空的内容
+                    var index_ = allData.length;
+                    while (index_--) {
+                        if (allData[index_].content[0].data.length <= 0 && allData[index_].content[1].data.length <= 0 && allData[index_].content[2].data.length <= 0 && allData[index_].content[3].data.length <= 0) {
+                            allData.splice(index_, 1);
+                        }
+                    }
+                    for (let i = 0; i < allData.length; i++){
+                        let index_type = allData[i].content.length;
+                        while (index_type--) {
+                            if (allData[i].content[index_type].data.length<=0) {
+                                allData[i].content.splice(index_type, 1);
+                            }
+                        }
+                    }
+                    this.setData({
+                        list: allData,
+                    })
+                }
             }
         });
-
-
-
-
-
-
-        if (status == 0) {
-            let list = [{
-                    id: 1,
-                    name: '学习区',
-                    content: [{
-                            id: 1,
-                            name: '图片',
-                            data: [{
-                                    id: 1,
-                                    name: '学习区图片分享',
-                                    mount: 12,
-                                    image: '../../../images/12.jpg',
-                                    vip: true
-                                },
-                                {
-                                    id: 2,
-                                    name: '学习区图片分享',
-                                    mount: 34,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 3,
-                                    name: '学习区图片分享',
-                                    mount: 56,
-                                    image: '../../../images/13.jpg',
-                                    vip: false
-                                }
-                            ]
-                        },
-                        {
-                            id: 2,
-                            name: 'PPT',
-                            data: [{
-                                    id: 1,
-                                    name: '学习区图片分享',
-                                    mount: 12,
-                                    image: '../../../images/14.jpg',
-                                    vip: true
-                                },
-                                {
-                                    id: 1,
-                                    name: '学习区图片分享',
-                                    mount: 12,
-                                    image: '../../../images/14.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 2,
-                                    name: '学习区图片分享',
-                                    mount: 34,
-                                    image: '../../../images/15.jpg',
-                                    vip: true
-                                }
-                            ]
-                        },
-                        {
-                            id: 3,
-                            name: 'word文档',
-                            data: [{
-                                    id: 1,
-                                    name: '学习区图片分享',
-                                    mount: 12,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 2,
-                                    name: '学习区图片分享',
-                                    mount: 34,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 3,
-                                    name: '学习区图片分享',
-                                    mount: 56,
-                                    image: '../../../images/13.jpg',
-                                    vip: true
-                                },
-                                {
-                                    id: 4,
-                                    name: '学习区图片分享',
-                                    mount: 78,
-                                    image: '../../../images/14.jpg',
-                                    vip: true
-                                },
-                                {
-                                    id: 5,
-                                    name: '学习区图片分享',
-                                    mount: 99,
-                                    image: '../../../images/15.jpg',
-                                    vip: false
-                                },
-                            ]
-                        },
-                        {
-                            id: 4,
-                            name: '视频',
-                            data: [{
-                                    id: 1,
-                                    name: '学习区图片分享',
-                                    mount: 12,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 2,
-                                    name: '学习区图片分享',
-                                    mount: 34,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 3,
-                                    name: '学习区图片分享',
-                                    mount: 56,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 4,
-                                    name: '学习区图片分享',
-                                    mount: 78,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 5,
-                                    name: '学习区图片分享',
-                                    mount: 99,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 2,
-                    name: '听力区',
-                    content: [{
-                            id: 1,
-                            name: '图片',
-                            data: [{
-                                    id: 1,
-                                    name: '学习区图片分享',
-                                    mount: 12,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 2,
-                                    name: '学习区图片分享',
-                                    mount: 34,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 3,
-                                    name: '学习区图片分享',
-                                    mount: 56,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 4,
-                                    name: '学习区图片分享',
-                                    mount: 78,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                                {
-                                    id: 5,
-                                    name: '学习区图片分享',
-                                    mount: 99,
-                                    image: '../../../images/12.jpg',
-                                    vip: false
-                                },
-                            ]
-                        }
-
-                    ]
-                },
-            ];
-            return list;
-        } else {
-            let list = [{
-                    id: 1,
-                    name: '学习区',
-                    content: [{
-                            id: 1,
-                            name: '图片',
-                            data: [{
-                                id: 1,
-                                name: '学习区图片分享',
-                                mount: 12,
-                                image: '../../../images/12.jpg',
-                                vip: false
-                            }]
-                        },
-                        {
-                            id: 2,
-                            name: 'PPT',
-                            data: [{
-                                id: 1,
-                                name: '学习区图片分享',
-                                mount: 12,
-                                image: '../../../images/14.jpg',
-                                vip: true
-                            }]
-                        },
-                        //   {
-                        //       id: 3,
-                        //       name: 'word文档',
-                        //       data: [
-                        //           { id: 1, name: '学习区图片分享', mount: 12, image: '../../../images/12.jpg', vip: true }
-                        //       ]
-                        //   },
-                        //   {
-                        //       id: 4,
-                        //       name: '视频',
-                        //       data: [
-                        //           { id: 1, name: '学习区图片分享', mount: 12, image: '../../../images/12.jpg', vip: true}
-                        //       ]
-                        //   }
-                    ]
-                },
-                {
-                    id: 2,
-                    name: '听力区',
-                    content: [{
-                            id: 1,
-                            name: '图片',
-                            data: [{
-                                id: 1,
-                                name: '学习区图片分享',
-                                mount: 12,
-                                image: '../../../images/12.jpg',
-                                vip: false
-                            }]
-                        }
-
-                    ]
-                },
-            ];
-            return list;
-        }
+    
     },
     //   切换栏目
     onChangeTap: function(event) {
         let that = this;
         let id = event.currentTarget.dataset.status;
-        let allData = that.getNaturalData(id);
-        that.setData({
-            status: id,
-            list: allData,
+        this.setData({
+            status: event.currentTarget.dataset.status,
         })
+        that.getNaturalData(id);
     },
     // 显示弹框
     openTip: function(event) {
-        // 不是VIP
-        if (event.currentTarget.dataset.vip) {
-            this.setData({
-                hiddenmodalput: !this.data.hiddenmodalput
-            })
-        } else {
-            // 是VIP
-            let format = event.currentTarget.dataset.format;
-            let id = event.currentTarget.dataset.id;
-            // console.log(format);
-            wx.navigateTo({
-                url: "../course/course?format=" + format + "&id=" + id
-            })
-        }
+        // id event.currentTarget.dataset.id;
+        wx.showLoading({
+            title: '加载中',
+        })
+        wx.request({
+            url: url + '/study/api/getData.json', //请求接口的url
+            data: {
+                access_token: wx.getStorageSync('token'),
+                id: event.currentTarget.dataset.id
+            },
+            method: 'GET', //请求方式
+            header: {
+                'content-type': 'application/json' // 默认值
+            },
+            complete() {  //请求结束后隐藏 loading 提示框
+                wx.hideLoading();
+            },
+            success: res => {
+                if(res.data.status == 403){
+                    //会员
+                    this.setData({
+                        hiddenmodalput: !this.data.hiddenmodalput
+                    })
+                }else{
+                    let format = event.currentTarget.dataset.format;
+                    let id = event.currentTarget.dataset.id;
+                    wx.navigateTo({
+                        url: "../course/course?format=" + format + "&id=" + id
+                    })
+                }
+            }
+        });
 
     },
     // 取消按钮

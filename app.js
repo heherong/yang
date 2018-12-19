@@ -6,7 +6,8 @@ App({
     data: {
         third_session:'',
         userInfo:[],
-        url: "https://herongnizi.cn"
+        url: "https://herongnizi.cn",
+      imgUrl:'https://herongnizi.cn/study/data/img?path='
     },
     onLaunch: function () {
       
@@ -41,6 +42,10 @@ App({
             icon: 'success',
             duration: 2000
         })
+    },
+    // 时间转换
+      timeChange:function(time){
+        let data = time.substring(0,10);
+        return data;
     }
-
 })

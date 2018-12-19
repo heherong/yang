@@ -32,8 +32,8 @@
                                 <view class='list' catchtap="openTip" data-vip ="{{data.vip}}" data-format="{{content.id}}" data-id="{{data.id}}">
                                     <image src="{{data.image}}"></image>
                                     <image src='../../../images/vip.png'  class= "noVip {{data.vip ?  'vip': ' ' }} "></image>
-                                    <text>{{data.name}}</text>
-                                    <text class='list-name'>（浏览数：{{data.mount}})</text>
+                                    <text>{{data.title}}</text>
+                                    <text class='list-name'>（浏览数：{{data.scan}})</text>
                                 </view> 
                             </block>
                         </view>
@@ -44,8 +44,8 @@
     </view>
     <!-- 弹框 -->
     <modal hidden="{{hiddenmodalput}}" title="会员提醒" confirm-text="确认" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" >
-        <text class='tip-text'>你还不是会员哦，快来扫码加入吧~</text>
-        <image src='../../../images/ewm.png' class='tip-image'></image>
+        <text class='tip-text'>你还不是会员哦，赶紧联系客服加入吧~</text>
+        <image src='../../../images/ewm.jpg' class='tip-image'></image>
     </modal>
     <!-- 内容 成人 -->
     <view class="content-person {{status==1 ? 'box-show' : 'box-hidden'}} " >
@@ -67,8 +67,8 @@
                                 <view class='list' catchtap="openTip" data-vip ="{{data.vip}}" data-format="{{content.id}}" data-id="{{data.id}}">
                                 <image src="{{data.image}}"></image>
                                     <image src='../../../images/vip.png'  class= "noVip {{data.vip ?  'vip': ' ' }} "></image>
-                                    <text>{{data.name}}</text>
-                                    <text class='list-name'>（浏览数：{{data.mount}})</text>
+                                    <text>{{data.title}}</text>
+                                    <text class='list-name'>（浏览数：{{data.scan}})</text>
                                 </view> 
                             </block>
                         </view>

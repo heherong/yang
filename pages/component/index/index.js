@@ -6,8 +6,8 @@ const url = app.data.url;
 
 Page({
   data: {
-    title:'< 公告标题 >',
-    noticeContent:'  暂无通知 ',
+    title:'123',
+    noticeContent:'  321 ',
     ewmImg : '../../../images/ewm.jpg',
     dictionaryUrl : '/study/api/getTypeKeyValue.json',  //数据字典接口 
     InformUrl: '/study/api/getNotice.json',  //通知接口
@@ -16,7 +16,7 @@ Page({
         // 获取数据字典
         this.toGetToken(this.data.dictionaryUrl);
         //  获取公告
-    //   this.toGetInfo(this.data.InformUrl);
+        this.toGetInfo(this.data.InformUrl);
   },
     // 获取数据字典
     toGetToken: function (url_) {
@@ -43,6 +43,7 @@ Page({
 
     // 获取通知公告
     toGetInfo: function (url_) {
+        let that = this;
         wx.request({
             url: url + url_, //请求接口的url
             data: {
@@ -53,7 +54,10 @@ Page({
                 'content-type': 'application/json' // 默认值
             },
             success: res => {
-                console.log(res);
+                that.setData({
+                    title: res.data.data.title,
+                    noticeContent: res.data.data.content
+                })
             }
         });
     },

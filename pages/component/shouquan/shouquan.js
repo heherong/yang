@@ -41,6 +41,7 @@ Page({
                     var code_ = res.code;
                     var encryptedData = e.detail.encryptedData;
                     var iv = e.detail.iv;
+
                     that.toGetToken(url+'/study/api/getToken.json', code_, iv, encryptedData);
                 }else{
                     wx.showModal({

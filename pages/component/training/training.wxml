@@ -1,4 +1,4 @@
-<!--pages/comment/comment.wxml-->
+<!--pages/comment/training.wxml-->
 <view class='natural'>
      <!-- 内容 -->
     <view class="content box-show ">
@@ -21,8 +21,8 @@
                                 <view class='list' catchtap="openTip" data-vip ="{{data.vip}}" data-format="{{content.id}}" data-id="{{data.id}}">
                                     <image src="{{data.image}}"></image>
                                     <image src='../../../images/vip.png'  class= "noVip {{data.vip ?  'vip': ' ' }} "></image>
-                                    <text>{{data.name}}</text>
-                                    <text class='list-name'>（浏览数：{{data.mount}})</text>
+                                    <text>{{data.title}}</text>
+                                    <text class='list-name'>（浏览数：{{data.scan}})</text>
                                 </view> 
                             </block>
                         </view>
