@@ -77,15 +77,18 @@ Page({
             header: {
                 'content-type': 'application/json' // 默认值
             },
-            complete() {  //请求结束后隐藏 loading 提示框
-                wx.hideLoading();
-            },
             success: res => {
                 // 保存token
-                wx.setStorageSync("token",res.data.token);
-                wx.reLaunch({
-                  url: '../index/index',
-                })
+                console.log(res)
+                if (res.data && res.data.token){
+                    wx.setStorageSync("token", res.data.token);
+                    // wx.setStorageSync("token", ' rem4741jrbu2fjoed3jhehhi7gh4kobg');
+
+                    wx.reLaunch({
+                        url: '../index/index',
+                    })
+                }
+                
             }
         });
     },

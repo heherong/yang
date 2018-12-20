@@ -15,14 +15,14 @@ Page({
   onLoad: function () {
         // 获取数据字典
         this.toGetToken(this.data.dictionaryUrl);
-        //  获取公告
-        this.toGetInfo(this.data.InformUrl);
+        
   },
     // 获取数据字典
     toGetToken: function (url_) {
-        wx.showLoading({
-            title: '加载中',
-        })
+    	let that = this;
+//      wx.showLoading({
+//          title: '加载中',
+//      })
         wx.request({
             url: url+url_, //请求接口的url
             data: {
@@ -32,11 +32,16 @@ Page({
             header: {
                 'content-type': 'application/json' // 默认值
             },
-            complete() {  //请求结束后隐藏 loading 提示框
-                wx.hideLoading();
-            },
+//          complete() {  //请求结束后隐藏 loading 提示框
+//              wx.hideLoading();
+//          },
             success: res => {
-                // console.log(res);
+              app.openConfirm(res);
+              //  获取公告
+        			that.toGetInfo(that.data.InformUrl);
+            },
+            fail:res=>{
+                console.log(res);
             }
         });
     },
@@ -54,10 +59,17 @@ Page({
                 'content-type': 'application/json' // 默认值
             },
             success: res => {
-                that.setData({
-                    title: res.data.data.title,
-                    noticeContent: res.data.data.content
-                })
+                let res_ = app.openConfirm(res);
+                if (res_){
+                    that.setData({
+                        title: res_.data.data.title,
+                        noticeContent: res_.data.data.content
+                    })
+                }
+                
+            },
+            fail: res => {
+                console.log(res);
             }
         });
     },

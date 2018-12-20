@@ -34,7 +34,7 @@
     <!-- 弹框 -->
     <modal hidden="{{hiddenmodalput}}" title="会员提醒" confirm-text="确认" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" >
         <text class='tip-text'>你还不是会员哦，快来扫码加入吧~</text>
-        <image src='../../../images/ewm.png' class='tip-image'></image>
+        <image src='../../../images/ewm.jpg' class='tip-image'></image>
     </modal>
    
 </view>
